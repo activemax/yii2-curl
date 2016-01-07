@@ -1,5 +1,5 @@
 {
-  "name": "linslin/yii2-curl",
+  "name": "maxwen/yii2-curl",
   "description": "A base curl wrapper for Yii2 Framework",
   "type": "yii2-extension",
   "keywords": [
