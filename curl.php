@@ -1,6 +1,6 @@
 <?php
 
-namespace maxwen\curl;
+namespace maxwen\yii\curl;
 
 /**
  * A basic CURL wrapper
@@ -84,11 +84,11 @@ class Curl {
     /**
      * Makes an HTTP DELETE request to the specified $url with an optional array or string of $vars
      *
-     * Returns a CurlResponse object if the request was successful, false otherwise
+     * Returns a Response object if the request was successful, false otherwise
      *
      * @param string $url
      * @param array|string $vars 
-     * @return CurlResponse object
+     * @return Response object
     **/
     function delete($url, $vars = array()) {
         return $this->request('DELETE', $url, $vars);
@@ -106,11 +106,11 @@ class Curl {
     /**
      * Makes an HTTP GET request to the specified $url with an optional array or string of $vars
      *
-     * Returns a CurlResponse object if the request was successful, false otherwise
+     * Returns a Response object if the request was successful, false otherwise
      *
      * @param string $url
      * @param array|string $vars 
-     * @return CurlResponse
+     * @return Response
     **/
     function get($url, $vars = array()) {
         if (!empty($vars)) {
@@ -123,11 +123,11 @@ class Curl {
     /**
      * Makes an HTTP HEAD request to the specified $url with an optional array or string of $vars
      *
-     * Returns a CurlResponse object if the request was successful, false otherwise
+     * Returns a Response object if the request was successful, false otherwise
      *
      * @param string $url
      * @param array|string $vars
-     * @return CurlResponse
+     * @return Response
     **/
     function head($url, $vars = array()) {
         return $this->request('HEAD', $url, $vars);
@@ -138,7 +138,7 @@ class Curl {
      *
      * @param string $url
      * @param array|string $vars 
-     * @return CurlResponse|boolean
+     * @return Response|boolean
     **/
     function post($url, $vars = array()) {
         return $this->request('POST', $url, $vars);
@@ -147,11 +147,11 @@ class Curl {
     /**
      * Makes an HTTP PUT request to the specified $url with an optional array or string of $vars
      *
-     * Returns a CurlResponse object if the request was successful, false otherwise
+     * Returns a Response object if the request was successful, false otherwise
      *
      * @param string $url
      * @param array|string $vars 
-     * @return CurlResponse|boolean
+     * @return Response|boolean
     **/
     function put($url, $vars = array()) {
         return $this->request('PUT', $url, $vars);
@@ -160,12 +160,12 @@ class Curl {
     /**
      * Makes an HTTP request of the specified $method to a $url with an optional array or string of $vars
      *
-     * Returns a CurlResponse object if the request was successful, false otherwise
+     * Returns a Response object if the request was successful, false otherwise
      *
      * @param string $method
      * @param string $url
      * @param array|string $vars
-     * @return CurlResponse|boolean
+     * @return Response|boolean
     **/
     function request($method, $url, $vars = array()) {
         $this->error = '';
@@ -179,7 +179,7 @@ class Curl {
         $response = curl_exec($this->request);
         
         if ($response) {
-            $response = new CurlResponse($response);
+            $response = new Response($response);
         } else {
             $this->error = curl_errno($this->request).' - '.curl_error($this->request);
         }

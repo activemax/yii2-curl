@@ -1,5 +1,5 @@
 <?php
-namespace maxwen\curl;
+namespace maxwen\yii\curl;
 /**
  * Parses the response from a Curl request into an object containing
  * the response body and an associative array of headers
@@ -7,7 +7,7 @@ namespace maxwen\curl;
  * @package curl
  * @author Sean Huber <shuber@huberry.com>
 **/
-class CurlResponse {
+class Response {
     
     /**
      * The body of the response without the headers block
